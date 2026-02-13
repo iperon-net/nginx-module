@@ -36,7 +36,8 @@ jobs:
           tar zxvf nginx-1.29.5.tar.gz
 
           cd nginx-1.29.5
-          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module --add-dynamic-module=../headers_more_nginx_module
+          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module
+#          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module --add-dynamic-module=../headers_more_nginx_module
           make modules
           cd objs/
 
