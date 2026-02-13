@@ -9,6 +9,8 @@ jobs:
   "download":
     name: "download"
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     timeout-minutes: 10
     strategy:
       matrix:
@@ -63,7 +65,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: "Crate tag ${{ steps.release.outputs.tag }}"
+      - name: "Create tag ${{ steps.release.outputs.tag }}"
         run: |
           git tag -f ${{ steps.release.outputs.tag }}
           git push origin ${{ steps.release.outputs.tag }}
