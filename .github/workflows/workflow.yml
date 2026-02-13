@@ -16,7 +16,7 @@ jobs:
         with:
           repository: nginx/nginx
           path: nginx
-          ref: "release-1.29.5"
+          ref: "release-1.29.*"
 
       - name: Checkout ngx_http_geoip2_module repository
         uses: actions/checkout@v6
@@ -24,7 +24,7 @@ jobs:
           repository: leev/ngx_http_geoip2_module
           path: ngx_http_geoip2_module
 
-      - name: Checkout ngx_http_geoip2_module repository
+      - name: Checkout headers-more-nginx-module repository
         uses: actions/checkout@v6
         with:
           repository: openresty/headers-more-nginx-module
