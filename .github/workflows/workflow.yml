@@ -11,6 +11,35 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Checkout nginx releases
+        id: last_release
+        uses: Saras-IT/get-repo-release@v1
+        with:
+          # The Github user or org that owns the repo. Default will be current owner.
+          owner: 'nginx'
+          # The repo name. Default will be current repo
+          repo: 'nginx'
+          # The repo name with org. E.g. myOrg/myRepo. Default will be current org/repo.
+          repository: 'nginx'
+          # GitHub Token
+          token: ${{ github.token }}
+          # Filter release tag.Use regex pattern like v16*
+          filter: 'release-1.29.*'
+          # Types of releases to exclude (e.g. draft,prerelease,release).Comma seperated list.
+#          excludes: "release"
+          # Compare tags by value (true) or by creation date (false). Default is true.
+          ignoreDate: true
+      - name: "Print result"
+        run: |
+          echo "id: ${{ steps.last_release.outputs.id }}"
+          echo "name: ${{ steps.last_release.outputs.name }}"
+          echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
+          echo "created_at: ${{ steps.last_release.outputs.created_atd }}"
+          echo "draft: ${{ steps.last_release.outputs.draft }}"
+          echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
+          echo "release: ${{ steps.last_release.outputs.release }}"
+         
+
       - name: Checkout nginx repository
         uses: actions/checkout@v6
         with:
