@@ -69,8 +69,8 @@ jobs:
         id: "tag_create"
         with:
           tag: ${{ steps.release.outputs.tag }}
-          tag_exists_error: false
-          message: "nginx release ${{ steps.release.outputs.tag }}"
+          force_push_tag: true
+          message: "nginx ${{ steps.release.outputs.tag }}"
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
