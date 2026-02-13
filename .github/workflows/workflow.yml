@@ -63,9 +63,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: "Make plugins"
+      - name: "Crate tag ${{ steps.release.outputs.tag }}"
         run: |
           git tag -f ${{ steps.release.outputs.tag }}
+          git push origin ${{ steps.release.outputs.tag }}
+
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
