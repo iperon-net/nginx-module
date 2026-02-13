@@ -85,20 +85,37 @@ jobs:
           force_push_tag: true
           message: "nginx ${{ steps.release.outputs.tag }}"
 
-#  release:
-#    name: "create release"
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: write
-#    timeout-minutes: 10
-#    needs: ["build"]
-#    steps:
-#      - uses: actions/download-artifact@v7
-#        with:
-#          name: ${{ steps.release.outputs.tag }}
-#      - name: Display structure of downloaded files
-#        run: ls -R
-#
+
+  release:
+    name: "create release"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 10
+    needs: ["build"]
+    strategy:
+      matrix:
+        version: [ release-1.28.*, release-1.29.* ]
+    steps:
+      - name: Get latest release
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASES=$(curl -s \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/nginx/nginx/releases)
+
+          TAG=$(echo "$RELEASES" | jq -r 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | .tag_name')
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: ${{ steps.release.outputs.tag }}
+      - name: Display structure of downloaded files
+        run: ls -R
+
 #      - name: Checkout repository
 #        uses: actions/checkout@v6
 #
