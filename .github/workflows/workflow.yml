@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        version: [ ${{ env.version_stable }}, ${{ env.version_mainline }} ]
+        version: [ "${{ env.version_stable }}", "${{ env.version_mainline }}" ]
     steps:
       - name: Get latest release
         id: release
@@ -93,7 +93,7 @@ jobs:
     needs: ["build"]
     strategy:
       matrix:
-        version: [ ${{ env.version_stable }}, ${{ env.version_mainline }} ]
+        version: [ "${{ env.version_stable }}", "${{ env.version_mainline }}" ]
     steps:
       - name: Get latest release
         id: release
