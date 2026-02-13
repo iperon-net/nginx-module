@@ -25,11 +25,14 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/nginx/nginx/releases)
 
-          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+          echo "Latest release: $LATEST"
 
-      - name: Use release info
-        run: |
-          echo "New release detected: ${{ steps.release.outputs.tag }}"
+
+#          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+#
+#      - name: Use release info
+#        run: |
+#          echo "New release detected: ${{ steps.release.outputs.tag }}"
           
 
 #          TAG=$(echo "$LATEST" | jq 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | {tag: .tag_name, name: .name, published: .published_at, prerelease: .prerelease}')
