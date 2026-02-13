@@ -1,0 +1,11 @@
+name: workflow.yml
+on:
+
+jobs:
+  "download":
+    name: "download"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "Run console log"
+        run: echo "Hello GitHub Actions!"
