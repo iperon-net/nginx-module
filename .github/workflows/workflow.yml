@@ -61,16 +61,16 @@ jobs:
           cd objs/
           ls -ls
 
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Создать тег 'latest'
-        uses: rickstaa/action-create-tag@v1
-        id: create_tag
-        with:
-          tag: ${{ steps.release.outputs.tag }}
-          message: ${{ steps.release.outputs.tag }}
-          tag_exists_error: false
+#      - name: Checkout repository
+#        uses: actions/checkout@v6
+#
+#      - name: Создать тег 'latest'
+#        uses: rickstaa/action-create-tag@v1
+#        id: create_tag
+#        with:
+#          tag: ${{ steps.release.outputs.tag }}
+#          message: ${{ steps.release.outputs.tag }}
+#          tag_exists_error: false
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
