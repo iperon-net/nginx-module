@@ -58,11 +58,11 @@ jobs:
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module
           make modules
-          cd objs/
-          ls -ls
+          cd ../
 
-#      - name: Checkout repository
-#        uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
 #
 #      - name: Создать тег 'latest'
 #        uses: rickstaa/action-create-tag@v1
