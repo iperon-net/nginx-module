@@ -65,7 +65,7 @@ jobs:
 
       - uses: actions/upload-artifact@v6.0.0
         with:
-          name: modules
+          name: ${{ steps.release.outputs.tag }}
           path: |
             nginx/objs/ngx_http_headers_more_filter_module.so
             nginx/objs/ngx_http_geoip2_module.so
