@@ -63,17 +63,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-#      - name: "Make plugins"
-#        run: |
-#          ls -ls
-
-      - name: Create tag
-        uses: rickstaa/action-create-tag@v1
-        id: create_tag
-        with:
-          tag: ${{ steps.release.outputs.tag }}
-          message: ${{ steps.release.outputs.tag }}
-          tag_exists_error: false
+      - name: "Make plugins"
+        run: |
+          git tag -f ${{ steps.release.outputs.tag }}
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
