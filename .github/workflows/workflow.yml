@@ -54,11 +54,11 @@ jobs:
           repository: openresty/redis2-nginx-module
           path: redis2-nginx-module
 
-      - name: Checkout encrypted-session-nginx-module repository
+      - name: Checkout xss-nginx-module repository
         uses: actions/checkout@v6
         with:
-          repository: openresty/encrypted-session-nginx-module
-          path: encrypted-session-nginx-module
+          repository: openresty/xss-nginx-module
+          path: xss-nginx-module
 
       - name: "Make plugins"
         run: |
@@ -73,7 +73,7 @@ jobs:
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module \
             --add-dynamic-module=../redis2-nginx-module \
-            --add-dynamic-module=../encrypted-session-nginx-module
+            --add-dynamic-module=../xss-nginx-module
           make modules
           ls -ls objs/
 
