@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  version_stable: release-1.28.*
+  version_mainline: release-1.29.*
+
 jobs:
   build:
     name: "build module"
@@ -14,7 +18,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        version: [ release-1.28.*, release-1.29.* ]
+        version: [ ${{ env.version_stable }}, ${{ env.version_mainline }} ]
     steps:
       - name: Get latest release
         id: release
@@ -89,7 +93,7 @@ jobs:
     needs: ["build"]
     strategy:
       matrix:
-        version: [ release-1.28.*, release-1.29.* ]
+        version: [ ${{ env.version_stable }}, ${{ env.version_mainline }} ]
     steps:
       - name: Get latest release
         id: release
