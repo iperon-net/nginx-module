@@ -59,12 +59,6 @@ jobs:
           repository: openresty/xss-nginx-module
           path: xss-nginx-module
 
-      - name: Checkout set-misc-nginx-module repository
-        uses: actions/checkout@v6
-        with:
-          repository: openresty/set-misc-nginx-module
-          path: set-misc-nginx-module
-
       - name: "Make plugins"
         run: |
           sudo add-apt-repository -y ppa:maxmind/ppa
