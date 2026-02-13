@@ -114,6 +114,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.release.outputs.tag }}
+          make_latest: false
           files: |
             ngx_http_geoip2_module.so
             ngx_http_headers_more_filter_module.so
