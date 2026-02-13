@@ -11,17 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout tools repo
+      - name: Checkout ngx_http_geoip2_module repository
         uses: actions/checkout@v6
         with:
           repository: leev/ngx_http_geoip2_module
           path: ngx_http_geoip2_module
 
-
+      - name: Checkout ngx_http_geoip2_module repository
+        uses: actions/checkout@v6
+        with:
+          repository: openresty/headers-more-nginx-module
+          path: headers_more_nginx_module
 
       - name: "Run console log"
         run: |
           ls -ls
+          cd ./ngx_http_geoip2_module
+          ls -ls
+
 #          sudo add-apt-repository -y ppa:maxmind/ppa
 #          sudo apt update
 #          sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
