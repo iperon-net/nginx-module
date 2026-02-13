@@ -21,4 +21,4 @@ jobs:
           tar zxvf nginx-1.29.5.tar.gz
           unzip ngx_http_geoip2_module.zip
           cd nginx-1.29.5
-          ./configure --with-compat --add-dynamic-module=/../ngx_http_geoip2_module
+          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module
