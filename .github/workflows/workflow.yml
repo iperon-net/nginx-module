@@ -69,6 +69,7 @@ jobs:
           cd nginx/
           ls -ls
           ./auto/configure --with-compat \
+            --with-http_ssl_module \
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module \
             --add-dynamic-module=../redis2-nginx-module \
