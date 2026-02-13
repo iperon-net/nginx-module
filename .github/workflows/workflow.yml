@@ -68,6 +68,7 @@ jobs:
       - name: "Create tag ${{ steps.release.outputs.tag }}"
         run: |
           git tag -f ${{ steps.release.outputs.tag }} -m "nginx ${{ steps.release.outputs.tag }}"
+          git push origin --delete ${{ steps.release.outputs.tag }}
           git push origin ${{ steps.release.outputs.tag }}
 
 
