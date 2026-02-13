@@ -79,7 +79,7 @@ jobs:
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module \
             --add-dynamic-module=../redis2-nginx-module \
-            --add-dynamic-module=../xss-nginx-module \
+            --add-dynamic-module=../xss-nginx-module
           make modules
           ls -ls objs/
 
