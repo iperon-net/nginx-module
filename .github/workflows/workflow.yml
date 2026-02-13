@@ -72,6 +72,5 @@ jobs:
           tag_exists_error: false
           message: "nginx release ${{ steps.release.outputs.tag }}"
 
-
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
