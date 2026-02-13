@@ -18,8 +18,12 @@ jobs:
           sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
           wget https://github.com/nginx/nginx/releases/download/release-1.29.5/nginx-1.29.5.tar.gz
           wget https://github.com/leev/ngx_http_geoip2_module/archive/refs/heads/master.zip -O ngx_http_geoip2_module.zip
+          wget https://github.com/openresty/headers-more-nginx-module/archive/refs/heads/master.zip -O ngx_headers_more_nginx_module.zip
           tar zxvf nginx-1.29.5.tar.gz
           unzip ngx_http_geoip2_module.zip
+          unzip ngx_headers_more_nginx_module.zip
+          ls -ls
+          
           cd nginx-1.29.5
           ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module-master
           make modules
