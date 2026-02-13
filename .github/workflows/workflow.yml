@@ -12,4 +12,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: "Run console log"
-        run: echo "Hello GitHub Actions!"
+        run: |
+          wget https://github.com/nginx/nginx/releases/download/release-1.29.5/nginx-1.29.5.tar.gz
+          tar zxvf nginx-1.29.5.tar.gz
+          ls -ls
