@@ -80,7 +80,6 @@ jobs:
             --add-dynamic-module=../headers_more_nginx_module \
             --add-dynamic-module=../redis2-nginx-module \
             --add-dynamic-module=../xss-nginx-module \
-            --add-dynamic-module=../set-misc-nginx-module
           make modules
           ls -ls objs/
 
