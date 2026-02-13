@@ -48,22 +48,22 @@ jobs:
           repository: openresty/headers-more-nginx-module
           path: headers_more_nginx_module
 
-      - name: Checkout ngx_http_redis repository
+      - name: Checkout redis2-nginx-module repository
         uses: actions/checkout@v6
         with:
-          repository: osokin/ngx_http_redis
-          path: ngx_http_redis
+          repository: openresty/redis2-nginx-module
+          path: redis2-nginx-module
 
       - name: "Make plugins"
         run: |
           sudo add-apt-repository -y ppa:maxmind/ppa
           sudo apt update
-          sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin libgd-dev
+          sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
 
           cd nginx/
           ls -ls
           ./auto/configure --with-compat \
-            --add-dynamic-module=../ngx_http_geoip2_module \
+            --add-dynamic-module=../redis2-nginx-module \
             --add-dynamic-module=../headers_more_nginx_module \
             --add-dynamic-module=../ngx_http_redis
           make modules
