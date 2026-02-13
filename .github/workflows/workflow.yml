@@ -48,6 +48,12 @@ jobs:
           repository: openresty/headers-more-nginx-module
           path: headers_more_nginx_module
 
+      - name: Checkout headers-more-nginx-module repository
+        uses: actions/checkout@v6
+        with:
+          repository: OpenIDC/ngx_openidc_module
+          path: ngx_openidc_module
+
       - name: "Make plugins"
         run: |
           sudo add-apt-repository -y ppa:maxmind/ppa
@@ -58,7 +64,8 @@ jobs:
           ls -ls
           ./auto/configure --with-compat \
             --add-dynamic-module=../ngx_http_geoip2_module \
-            --add-dynamic-module=../headers_more_nginx_module
+            --add-dynamic-module=../headers_more_nginx_module \
+            --add-dynamic-module=../ngx_openidc_module
           make modules
 
       - uses: actions/upload-artifact@v6
