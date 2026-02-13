@@ -28,14 +28,11 @@ jobs:
           TAG=$(echo "$RELEASES" | jq -r 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | .tag_name')
 
           echo "tag: $TAG"                                                                                                                                      
+          echo "tag=$LATEST" >> $GITHUB_OUTPUT
 
-#          echo "json release: $RELEASES"
-#          echo "tag=$LATEST" >> $GITHUB_OUTPUT
-
-
-#      - name: Use release info
-#        run: |
-#          echo "New release detected: ${{ steps.release.outputs.tag }}"
+      - name: Use release info
+        run: |
+          echo "New release detected: ${{ steps.release.outputs.tag }}"
           
 
 #          TAG=$(echo "$LATEST" | jq 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | {tag: .tag_name, name: .name, published: .published_at, prerelease: .prerelease}')
