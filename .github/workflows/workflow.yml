@@ -69,8 +69,9 @@ jobs:
         run: |
           git tag -f ${{ steps.release.outputs.tag }} -m "nginx ${{ steps.release.outputs.tag }}"
           git push origin --delete ${{ steps.release.outputs.tag }}
-          git push origin ${{ steps.release.outputs.tag }}
+          git push origin ${{ steps.release.outputs.tag }} --force
 
+          
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
