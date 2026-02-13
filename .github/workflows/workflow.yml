@@ -31,12 +31,12 @@ jobs:
 
       - name: "Run console log"
         run: |
-          ls -ls
           sudo add-apt-repository -y ppa:maxmind/ppa
           sudo apt update
           sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
 
-          cd nginx
+          cd nginx/
+          ls -ls
           ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module --add-dynamic-module=../headers_more_nginx_module
           make modules
           cd objs/
