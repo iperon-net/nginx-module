@@ -20,16 +20,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST=$(curl -s \
+          RELEASES=$(curl -s \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/nginx/nginx/releases)
 
-          echo "Latest release: $LATEST"
+          TAG=$(echo "$LATEST" | jq 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | {tag: .tag_name, name: .name, published: .published_at, prerelease: .prerelease}')
 
+          echo "tag: $TAG"                                                                                                                                      
 
+#          echo "json release: $RELEASES"
 #          echo "tag=$LATEST" >> $GITHUB_OUTPUT
-#
+
+
 #      - name: Use release info
 #        run: |
 #          echo "New release detected: ${{ steps.release.outputs.tag }}"
