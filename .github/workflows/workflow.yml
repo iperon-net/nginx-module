@@ -27,10 +27,6 @@ jobs:
           TAG=$(echo "$RELEASES" | jq -r 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | .tag_name')
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
-#      - name: Use release info
-#        run: |
-#          echo "Release nginx : ${{ steps.release.outputs.tag }}"
-
       - name: Checkout nginx repository
         uses: actions/checkout@v6
         with:
@@ -64,3 +60,6 @@ jobs:
           make modules
           cd objs/
           ls -ls
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
