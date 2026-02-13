@@ -61,7 +61,7 @@ jobs:
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module
           make modules
-          ls -ls nginx/objs/
+          ls -ls objs/
 
       - uses: actions/upload-artifact@v6
         with:
