@@ -63,7 +63,7 @@ jobs:
 #          ls -ls objs/ngx_http_headers_more_filter_module.so
 #          ls -ls objs/ngx_http_geoip2_module.so
 
-      - uses: actions/upload-artifact@v6.0.0
+      - uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.release.outputs.tag }}
           path: |
@@ -80,10 +80,11 @@ jobs:
           force_push_tag: true
           message: "nginx ${{ steps.release.outputs.tag }}"
 
-      - name: "LS"
-        run: |
-          cd ../
-          ls -ls
+      - uses: actions/download-artifact@v7
+        with:
+          name: ${{ steps.release.outputs.tag }}
+      - name: Display structure of downloaded files
+        run: ls -R
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
