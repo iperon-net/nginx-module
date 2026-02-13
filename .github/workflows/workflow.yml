@@ -25,7 +25,7 @@ jobs:
           ls -ls
           
           cd nginx-1.29.5
-          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module-master
+          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module-master --add-dynamic-module=../ngx_headers_more_nginx_module-master
           make modules
           cd objs/
           ls -ls
