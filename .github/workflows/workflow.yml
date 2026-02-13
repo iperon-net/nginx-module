@@ -74,6 +74,7 @@ jobs:
 
       - name: "LS"
         run: |
+          cd ../
           ls -ls
 
 #      - name: Release
