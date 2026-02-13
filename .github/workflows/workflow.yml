@@ -63,7 +63,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-#
+      - name: "Make plugins"
+        run: |
+          ls -ls
+
+
 #      - name: Создать тег 'latest'
 #        uses: rickstaa/action-create-tag@v1
 #        id: create_tag
