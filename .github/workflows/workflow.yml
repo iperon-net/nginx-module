@@ -22,4 +22,4 @@ jobs:
           unzip ngx_http_geoip2_module.zip
           ls -ls
           cd nginx-1.29.5
-          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module
+          ./configure --with-compat --add-dynamic-module=../ngx_http_geoip2_module-master
