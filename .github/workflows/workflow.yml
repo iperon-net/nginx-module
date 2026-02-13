@@ -25,26 +25,20 @@ jobs:
             https://api.github.com/repos/nginx/nginx/releases)
 
           TAG=$(echo "$RELEASES" | jq -r 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | .tag_name')
-
-          echo "tag: $TAG"                                                                                                                                      
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
       - name: Use release info
         run: |
-          echo "New release detected: ${{ steps.release.outputs.tag }}"
-          
+          echo "Release nginx : ${{ steps.release.outputs.tag }}"
 
-#          TAG=$(echo "$LATEST" | jq 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | {tag: .tag_name, name: .name, published: .published_at, prerelease: .prerelease}')
-#          echo "tag=$TAG" >> $GITHUB_OUTPUT
+      - name: Checkout nginx repository
+        uses: actions/checkout@v6
+        with:
+          repository: nginx/nginx
+          path: nginx
+          ref: ${{ steps.release.outputs.tag }}
 
 
-#      - name: Checkout nginx repository
-#        uses: actions/checkout@v6
-#        with:
-#          repository: nginx/nginx
-#          path: nginx
-##          ref: "release-1.29.*"
-#
 #      - name: Checkout ngx_http_geoip2_module repository
 #        uses: actions/checkout@v6
 #        with:
