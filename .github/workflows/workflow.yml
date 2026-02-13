@@ -14,7 +14,6 @@ jobs:
       matrix:
         version: [ release-1.28.*, release-1.29.* ]
     steps:
-
       - name: Get latest release
         id: release
         env:
@@ -28,7 +27,7 @@ jobs:
           TAG=$(echo "$RELEASES" | jq -r 'first(.[] |  select(.tag_name|test("${{ matrix.version }}"))) | .tag_name')
 
           echo "tag: $TAG"                                                                                                                                      
-          echo "tag=$LATEST" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
 
       - name: Use release info
         run: |
