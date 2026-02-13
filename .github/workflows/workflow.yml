@@ -65,11 +65,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: "Create tag ${{ steps.release.outputs.tag }}"
-        run: |
-          git tag -f ${{ steps.release.outputs.tag }} -m "nginx ${{ steps.release.outputs.tag }}"
-          git push origin --delete ${{ steps.release.outputs.tag }}
-          git push origin ${{ steps.release.outputs.tag }} --force
+#      - name: "Create tag ${{ steps.release.outputs.tag }}"
+#        run: |
+#          git tag -f ${{ steps.release.outputs.tag }} -m "nginx ${{ steps.release.outputs.tag }}"
+#          git push origin --delete ${{ steps.release.outputs.tag }}
+#          git push origin ${{ steps.release.outputs.tag }} --force
 
           
 
