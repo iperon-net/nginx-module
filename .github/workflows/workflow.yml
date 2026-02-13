@@ -26,7 +26,6 @@ jobs:
       - name: "Run console log"
         run: |
           ls -ls
-
           sudo add-apt-repository -y ppa:maxmind/ppa
           sudo apt update
           sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
