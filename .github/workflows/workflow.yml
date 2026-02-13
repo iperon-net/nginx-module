@@ -65,13 +65,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: "Create tag ${{ steps.release.outputs.tag }}"
-        run: |
-          git tag -f ${{ steps.release.outputs.tag }}
-          git push origin --delete ${{ steps.release.outputs.tag }}
-          git push origin ${{ steps.release.outputs.tag }} --force
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{ steps.release.outputs.tag }}
+          tag_exists_error: false
+          message: "nginx release ${{ steps.release.outputs.tag }}"
 
-          
 
 #      - name: Release
 #        uses: softprops/action-gh-release@v2
