@@ -54,6 +54,12 @@ jobs:
           repository: openresty/redis2-nginx-module
           path: redis2-nginx-module
 
+      - name: Checkout encrypted-session-nginx-module repository
+        uses: actions/checkout@v6
+        with:
+          repository: openresty/encrypted-session-nginx-module
+          path: encrypted-session-nginx-module
+
       - name: "Make plugins"
         run: |
           sudo add-apt-repository -y ppa:maxmind/ppa
@@ -65,7 +71,8 @@ jobs:
           ./auto/configure --with-compat \
             --add-dynamic-module=../ngx_http_geoip2_module \
             --add-dynamic-module=../headers_more_nginx_module \
-            --add-dynamic-module=../redis2-nginx-module
+            --add-dynamic-module=../redis2-nginx-module \
+            --add-dynamic-module=../encrypted-session-nginx-module
           make modules
           ls -ls objs/
 
