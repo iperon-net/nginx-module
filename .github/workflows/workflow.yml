@@ -67,8 +67,8 @@ jobs:
         with:
           name: modules
           path: |
-            objs/ngx_http_headers_more_filter_module.so
-            objs/ngx_http_geoip2_module.so
+            nginx/objs/ngx_http_headers_more_filter_module.so
+            nginx/objs/ngx_http_geoip2_module.so
 
       - name: Checkout repository
         uses: actions/checkout@v6
