@@ -83,6 +83,7 @@ jobs:
             nginx/objs/ngx_http_headers_more_filter_module.so
             nginx/objs/ngx_http_geoip2_module.so
             nginx/objs/ngx_http_xss_filter_module.so
+            nginx/objs/ngx_redis2_nginx_module.so
 
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -111,3 +112,4 @@ jobs:
             ngx_http_geoip2_module.so
             ngx_http_headers_more_filter_module.so
             ngx_http_xss_filter_module.so
+            ngx_redis2_nginx_module.so
