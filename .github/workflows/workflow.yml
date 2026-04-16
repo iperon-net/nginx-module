@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        version: [ release-1.28.*, release-1.29.*, release-1.30.* ]
+        version: [ release-1.30.*, release-1.29.*, release-1.28.* ]
     steps:
       - name: Get latest release
         id: release
@@ -105,7 +105,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.release.outputs.tag }}
-          make_latest: true
+          make_latest: ${{ startsWith(steps.release.outputs.tag, 'release-1.30.') }}
           files: |
             ngx_http_geoip2_module.so
             ngx_http_headers_more_filter_module.so
