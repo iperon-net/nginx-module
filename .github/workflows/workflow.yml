@@ -3,6 +3,12 @@ name: workflow.yml
 on:
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -13,7 +19,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        version: [ release-1.28.*, release-1.29.* ]
+        version: [ release-1.28.*, release-1.29.*, release-1.30.* ]
     steps:
       - name: Get latest release
         id: release
@@ -76,7 +82,7 @@ jobs:
           make modules
           ls -ls objs/
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.release.outputs.tag }}
           path: |
@@ -97,14 +103,14 @@ jobs:
           force_push_tag: true
           message: "nginx ${{ steps.release.outputs.tag }}"
 
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           name: ${{ steps.release.outputs.tag }}
       - name: Display structure of downloaded files
         run: ls -R
 
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.release.outputs.tag }}
           make_latest: false
