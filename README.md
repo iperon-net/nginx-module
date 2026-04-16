@@ -12,7 +12,6 @@ Currently, the project automatically builds the following popular third-party mo
 
 - **[ngx_http_geoip2_module](https://github.com/leev/ngx_http_geoip2_module)** (leev/ngx_http_geoip2_module) — module for determining client geographic location by IP address (based on GeoIP2 databases).
 - **[headers-more-nginx-module](https://github.com/openresty/headers-more-nginx-module)** (openresty/headers-more-nginx-module) — module for flexible management of request and response headers (set, add, delete, modify).
-- **[redis2-nginx-module](https://github.com/openresty/redis2-nginx-module)** (openresty/redis2-nginx-module) — module for direct communication with Redis server from NGINX configuration.
 - **[xss-nginx-module](https://github.com/openresty/xss-nginx-module)** (openresty/xss-nginx-module) — module for Cross-Site Scripting (XSS) filtering and processing.
 
 ## ✨ Project Features
